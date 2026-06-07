@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/ivan-prykhodko/go-slices"
+)
 
 func main() {
 	l := lyrics()
@@ -13,4 +17,9 @@ func lyrics() []string {
 		"Hello",
 		"Is it me you're looking for?",
 	}
+}
+
+func fooBar() {
+	// This is just for using any dependency
+	_ = slices.Unique(lyrics())
 }
