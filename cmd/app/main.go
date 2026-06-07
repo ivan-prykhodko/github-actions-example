@@ -3,6 +3,14 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Hello")
-	fmt.Println("Is it me you're looking for?")
+	l := lyrics()
+	fmt.Println(l[0])
+	fmt.Println(l[1])
+}
+
+func lyrics() []string {
+	return []string{
+		"Hello",
+		"Is it me you're looking for?",
+	}
 }
