@@ -1,6 +1,9 @@
-name: Go
+name: ci
 
-on: [push]
+#on: [push]
+on:
+  push:
+    tags: [ "v*" ]
 
 jobs:
   build:

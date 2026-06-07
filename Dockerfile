@@ -1,11 +1,14 @@
 ARG GO_VERSION=1.25
 
 
-FROM golang:${GO_VERSION}-alpine AS builder
+FROM --platform=$BUILDPLATFORM golang:${GO_VERSION}-alpine AS builder
+ARG TARGETOS
+ARG TARGETARCH
 ENV CGO_ENABLED=0
 ADD . /build
 WORKDIR /build
-RUN cd cmd/app && go build -ldflags "-s -w" -o /build/app
+RUN GOOS=$TARGETOS GOARCH=$TARGETARCH \
+    cd cmd/app && go build -ldflags "-s -w" -o /build/app
 
 
 FROM scratch AS app_prod
